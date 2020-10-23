@@ -4,8 +4,13 @@ const app = express()
 const dotenv = require('dotenv').config()
 const moviesAPI = require('./routes/movies')
 const mongoose = require('mongoose')
+const cors = require('cors')
 const url = process.env.DB
 const {logError, handleError} = require('./middlewares/errorMiddleware')
+
+/* En esta linea se especifica que el servidor en el que instalemos nuestra aplicacion 
+   aceptara los request que vengan desde cualquier servidor externo */
+app.use(cors())
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
