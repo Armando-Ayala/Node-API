@@ -217,7 +217,21 @@ const movies =[{
       "Drama|Film-Noir|Musical|Thriller"
     ]
   }]
-  
+
+  const filterMoviesMocks = tags => movies.filter(movie => movies.tags.includes(tags))
+
+  class servicesMoviesMocks{
+
+    async getMovies(){
+      return Promise.resolve(movies)
+    }
+
+    async createMovie(){
+      return Promise.resolve(movies[0])
+    }
+  }
   module.exports={
-    movies
+    movies,
+    filterMoviesMocks,
+    servicesMoviesMocks
   }

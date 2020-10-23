@@ -1,3 +1,4 @@
+const { query } = require('express')
 const express = require('express')
 const {getAllMovies, getOneMovie, createMovie, updateMovie, deleteMovie} = require('../controllers/moviesControllers')
 
@@ -11,7 +12,11 @@ function moviesAPI(app){
 
     /*  CRUD */
     /*  Read */
-    router.get('/', getAllMovies)
+    router.get('/', (req, res, next)=>{
+        //Descomentar si queremos utilizar el middleware
+        //req.query.tags = "Animation"
+        next()
+    },getAllMovies)
 
     /*  Read one movie */
     router.get('/:movieId', getOneMovie)
